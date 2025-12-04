@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genuine Engineering & Equipments</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height:1.7; color:#333; background:#f9f9f9; }
+        a { text-decoration:none; }
+        .container { max-width:1100px; margin:0 auto; padding:20px; }
+
+        /* Header */
+        header {
+            background:#1a365d;
+            color:white;
+            position:fixed;
+            width:100%;
+            top:0;
+            z-index:1000;
+            box-shadow:0 4px 10px rgba(0,0,0,0.2);
+        }
+        nav {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:1.2rem 20px;
+            max-width:1200px;
+            margin:0 auto;
+        }
+        .logo { font-size:1.8rem; font-weight:bold; }
+        .nav-menu { display:flex; gap:2.5rem; }
+        .nav-menu a {
+            color:white;
+            font-weight:600;
+            padding:0.5rem 0;
+            border-bottom:3px solid transparent;
+            transition:all 0.3s;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            color:#4a90e2;
+            border-bottom:3px solid #4a90e2;
+        }
+
+        /* Page Content */
+        main { margin-top:90px; padding:40px 0; min-height:80vh; }
+        .page { display:none; }
+        .page.active { display:block; animation:fadeIn 0.6s; }
+        @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+        h1 { font-size:3rem; color:#1a365d; text-align:center; margin-bottom:1.5rem; }
+        h2 { font-size:2.4rem; color:#1a365d; margin:2rem 0 1.5rem; text-align:center; }
+        p { font-size:1.1rem; margin-bottom:1.2rem; text-align:justify; }
+        ul { padding-left:40px; }
+        li { margin-bottom:12px; font-size:1.1rem; }
+
+        .highlight-box {
+            background:#e3f2fd;
+            padding:25px;
+            border-left:6px solid #1a365d;
+            margin:30px 0;
+            border-radius:8px;
+            font-size:1.15rem;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+            gap:25px;
+            margin-top:30px;
+        }
+        .card {
+            background:white;
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            text-align:center;
+            transition:transform 0.3s;
+        }
+        .card:hover { transform:translateY(-10px); }
+        .card h3 { color:#1a365d; margin-bottom:15px; font-size:1.5rem; }
+
+        /* Clients Carousel */
+        .carousel {
+            position:relative;
+            max-width:900px;
+            margin:40px auto;
+            overflow:hidden;
+            border-radius:12px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.15);
+        }
+        .slides { display:flex; transition:transform 0.6s ease; }
+        .slide {
+            min-width:100%;
+            text-align:center;
+            padding:40px 20px;
+            background:white;
+        }
+        .slide img { max-height:180px; margin-bottom:20px; }
+        .nav-btn {
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            background:rgba(26,54,93,0.8);
+            color:white;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            font-size:2rem;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+        }
+        #prevBtn { left:10px; }
+        #nextBtn { right:10px; }
+
+        /* Contact Form */
+        .contact-form {
+            max-width:600px;
+            margin:40px auto;
+            background:white;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width:100%;
+            padding:15px;
+            margin-bottom:20px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            font-size:1rem;
+        }
+        button {
+            background:#4a90e2;
+            color:white;
+            padding:15px 30px;
+            border:none;
+            border-radius:8px;
+            font-size:1.1rem;
+            cursor:pointer;
+            width:100%;
+        }
+        button:hover { background:#357abd; }
+
+        footer {
+            background:#111;
+            color:#aaa;
+            text-align:center;
+            padding:30px;
+            margin-top:50px;
+        }
+
+        @media (max-width:768px) {
+            .nav-menu { flex-direction:column; gap:1rem; }
+            h1 { font-size:2.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">Genuine Engineering & Equipments</div>
+        <div class="nav-menu">
+            <a href="#" data-page="home" class="active">Home</a>
+            <a href="#" data-page="about">About Us</a>
+            <a href="#" data-page="products">Products</a>
+            <a href="#" data-page="machines">Machines</a>
+            <a href="#" data-page="clients">Clients</a>
+            <a href="#" data-page="contact">Contact</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="container">
+            <h1>Welcome to Genuine Engineering & Equipments</h1>
+            <p style="font-size:1.4rem; text-align:center; font-style:italic; color:#1a365d;">
+                Our Motto: “Quality Products for clientele.”
+            </p>
+            <div class="highlight-box">
+                The Company was founded around 2005 by the Owners of the Parent Company “MAJESTIC ENGINEERING AND JK ENGINEERING”. Parent company in the market since 1992. Aiming to keep up with the market trends in manufacturing & Advance cutting edge technologies paved way for the founding of “GENUINE ENGINEERING & EQUIPMENTS” which specialized in fixture manufacturing & deep hole drilling.
+            </div>
+            <p>With over 30 years of combined experience from our parent companies and nearly two decades of specialized operations, we have established ourselves as a trusted name in precision engineering solutions across India.</p>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>Genuine Engineering & Equipments was established in 2005 with a clear vision: to deliver uncompromising quality in fixture manufacturing and deep hole drilling services.</p>
+            <p>Backed by parent companies with roots dating back to 1992, we combine traditional engineering excellence with modern manufacturing technologies.</p>
+
+            <h2>Why Choose Genuine Engineering & Equipments?</h2>
+            <div class="grid">
+                <div class="card"><h3>Quality 100%</h3><p>We never compromise on quality — every component undergoes rigorous testing.</p></div>
+                <div class="card"><h3>ISO 9001:2015 Certified</h3><p>Internationally recognized quality management system.</p></div>
+                <div class="card"><h3>Experienced Technicians</h3><p>Highly skilled team with decades of hands-on expertise.</p></div>
+                <div class="card"><h3>Economical Pricing</h3><p>Best value without sacrificing quality.</p></div>
+                <div class="card"><h3>On-Time Delivery</h3><p>We respect your deadlines as much as you do.</p></div>
+                <div class="card"><h3>Trusted Since 2005</h3><p>Nearly 20 years serving Indian industries.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCTS PAGE -->
+    <div id="products" class="page">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>We specialize in manufacturing high-precision engineering components with focus on:</p>
+            <div class="grid">
+                <div class="card"><h3>Custom Fixtures</h3><p>Welding fixtures, machining fixtures, assembly fixtures, inspection gauges</p></div>
+                <div class="card"><h3>Deep Hole Drilling Components</h3><p>Precision gun drilling, trepanning, and boring services</p></div>
+                <div class="card"><h3>Jigs & Fixtures</h3><p>Drill jigs, milling fixtures, turning fixtures</p></div>
+                <div class="card"><h3>Special Purpose Tools</h3><p>Custom-designed tools for specific industrial applications</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MACHINES PAGE -->
+    <div id="machines" class="page">
+        <div class="container">
+            <h1>Our Machines & Capabilities</h1>
+            <p>We are equipped with state-of-the-art machinery to handle the most challenging requirements:</p>
+            <div class="grid">
+                <div class="card"><h3>Deep Hole Drilling Machines</h3><p>Up to 1000mm depth with ±0.02mm accuracy</p></div>
+                <div class="card"><h3>CNC Machining Centers</h3><p>4-axis and 5-axis capabilities</p></div>
+                <div class="card"><h3>VMC & HMC</h3><p>High-precision vertical and horizontal machining</p></div>
+                <div class="card"><h3>CMM Inspection</h3><p>Coordinate Measuring Machine for quality assurance</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIENTS PAGE -->
+    <div id="clients" class="page">
+        <div class="container">
+            <h1>Our Valuable Clients</h1>
+            <p>We are proud to serve leading companies across automotive, aerospace, defense, and heavy engineering sectors.</p>
+
+            <div class="carousel">
+                <div class="slides" id="slides">
+                    <div class="slide"><img src="https://via.placeholder.com/600x200/1a365d/ffffff?text=Client+Logo+1" alt="Client 1"><p>Leading Automotive Manufacturer</p></div>
+                    <div class="slide"><img src="https://via.placeholder.com/600x200/1a365d/ffffff?text=Client+Logo+2" alt="Client 2"><p>Defense Equipment Supplier</p></div>
+                    <div class="slide"><img src="https://via.placeholder.com/600x200/1a365d/ffffff?text=Client+Logo+3" alt="Client 3"><p>Heavy Engineering Giant</p></div>
+                </div>
+                <div class="nav-btn" id="prevBtn">❮</div>
+                <div class="nav-btn" id="nextBtn">❯</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We'd love to discuss your next project. Get in touch with us today!</p>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Your Message" rows="6" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:1.2rem;">
+                <p><strong>Email:</strong> info@genuineengineering.in</p>
+                <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
+                <p><strong>Address:</strong> Coimbatore, Tamil Nadu, India</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Genuine Engineering & Equipments. All Rights Reserved. | Coimbatore, India</p>
+</footer>
+
+<script>
+    // Multi-page navigation (single file)
+    document.querySelectorAll('[data-page]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = this.getAttribute('data-page');
+
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(target).classList.add('active');
+
+            document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+            this.classList.add('active');
+
+            window.scrollTo(0,0);
+        });
+    });
+
+    // Clients carousel
+    let slideIndex = 0;
+    const slides = document.getElementById('slides');
+    const totalSlides = slides.children.length;
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        slideIndex = (slideIndex + 1) % totalSlides;
+        slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+        slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    });
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
